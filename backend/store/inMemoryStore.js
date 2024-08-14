@@ -78,7 +78,6 @@ class InMemoryStore {
         totalPurchaseAmount,
         discountCodes: this.discountCodes.map(dc => dc.code),
         totalDiscountAmount,
-        products
       };
     }
   }
