@@ -35,13 +35,13 @@ To run the backend server:
         npm start
         
 ### 3. API Documentation with Swagger
-For testing the backend APIs, Swagger has been implemented. You can view the OpenAPI documentation by navigating to the following endpoint after starting the backend server:
+    For testing the backend APIs, Swagger has been implemented. You can view the OpenAPI documentation by navigating to the following endpoint after starting the backend server:
+    
+    Swagger UI: http://localhost:5000/api-docs
+    Swagger was used during the development phase to test the APIs, as the frontend implementation was not initially developed. This documentation will help you interact with and test the few API endpoints.
 
-Swagger UI: http://localhost:5000/api-docs
-Swagger was used during the development phase to test the APIs, as the frontend implementation was not initially developed. This documentation will help you interact with and test the few API endpoints.
 
-
-Features
+### 4. Features
     Product Listing: Browse available products on the homepage.
     Cart Management: Add or remove items from the cart.
     Checkout: Proceed to checkout and place an order.
