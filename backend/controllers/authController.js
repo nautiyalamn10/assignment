@@ -17,7 +17,7 @@ exports.login = (req, res) => {
             // Set token in the cookie
             setTokenCookie(res, token);
 
-            res.status(200).json({ message: 'Login successful' });
+            return res.status(200).json({ message: 'Login successful' });
         }
 
         
