@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = ({ isLogin }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const AuthForm = ({ isLogin }) => {
     password: '',
   });
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate for redirection
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +39,8 @@ const AuthForm = ({ isLogin }) => {
 
       // Make an API request
       const response = await axios.post(endpoint, payload);
-
+      // After successful login/signup, redirect to the home page
+      navigate('/');
       // Handle success (you can redirect or show a message)
       console.log('Success:', response.data);
     } catch (err) {

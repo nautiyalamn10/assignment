@@ -16,11 +16,10 @@ const ProductList = () => {
           console.error('Error fetching products:', error);
   
           // Check if the error is due to authentication
-        //   if (error.response && error.response.status === 401) {
-        //     // Redirect to the login page
-        //     console.log(`${window.location.protocol}//${window.location.hostname}/login`);
-        //     window.location.href = `${window.location.protocol}//${window.location.hostname}/login`;
-        //   }
+          if (error.response && error.response.status === 401) {
+            // Redirect to the login page
+            navigate('/login');
+          }
         }
       };
   
