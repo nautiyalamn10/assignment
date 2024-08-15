@@ -7,11 +7,12 @@ const Admin = () => {
 
   const login = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('/api/auth/login', {
         username: 'admin',
+        email: 'admin@gmail.com',
         password: 'password'
       });
-      setToken(response.data.token);
+      setToken('dummy');
     } catch (error) {
       console.error('Login error:', error);
     }
@@ -19,7 +20,7 @@ const Admin = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/stats', {
+      const response = await axios.get('/api/admin/stats', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);
@@ -30,7 +31,7 @@ const Admin = () => {
 
   const generateDiscountCode = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/discount/generate', {
+      const response = await axios.get('/api/discount/generate', {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert(`New discount code generated: ${response.data.code}`);
