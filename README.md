@@ -1,6 +1,6 @@
 # E-Commerce Platform
 
-This is a simple e-commerce platform where users can browse products, add items to their cart, and proceed to checkout. The project is divided into two main parts: frontend (React) and backend (Node.js with Express and in-memory data storage).
+This is a simple e-commerce platform where users can browse products, add items to their cart, and proceed to checkout. The project is divided into two main parts: frontend (React) and backend (Node.js with Express and in-memory data storage). It has code for api docs
 
 
 ### 1. Frontend
@@ -10,7 +10,7 @@ The frontend is built using React and Axios for making API requests to the backe
 **To run the frontend:**
 
     1. Navigate to the frontend directory:
-    cd ecommerce-frontend
+        cd ecommerce-frontend
 
     2. Install all dependencies:
         npm install
@@ -33,6 +33,13 @@ To run the backend server:
 
     3. Start the backend server:
         npm start
+        
+###3. API Documentation with Swagger
+For testing the backend APIs, Swagger has been implemented. You can view the OpenAPI documentation by navigating to the following endpoint after starting the backend server:
+
+Swagger UI: http://localhost:5000/api-docs
+Swagger was used during the development phase to test the APIs, as the frontend implementation was not initially developed. This documentation will help you interact with and test the few API endpoints.
+
 
 Features
     Product Listing: Browse available products on the homepage.
