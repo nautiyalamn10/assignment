@@ -7,9 +7,15 @@ class InMemoryStore {
       this.carts = [];
       this.orders = [];
       this.discountCodes = [];
+      this.users = [];
       InMemoryStore.instance = this;
     }
   
+    //get all products
+    getProducts(){
+      return this.products;
+    }
+
     // Product methods
     addProduct(product) {
       product.id = this.products.length + 1;
@@ -80,6 +86,25 @@ class InMemoryStore {
         totalDiscountAmount,
       };
     }
+
+    doesEmailExist(email){
+      const emailExists = this.users.filter(cur_user=>cur_user.email===email);
+      return emailExists;
+    }
+
+    getUserByEmail(email) {
+      return this.users.find(u => u.email === email);
+    }
+
+    addUser(user){
+      
+      if(this.doesEmailExist(user.email).length){
+        throw new Error(`User with email : ${user.email} already exists in the database`);
+      }
+      const userPayload = { ...user, id: this.users.length };
+      this.users.push(userPayload);
+      return userPayload;
+    }
   }
   
   // Export the single instance of InMemoryStore
@@ -88,9 +113,15 @@ const instance = new InMemoryStore();
 function seedData() {
     const store = InMemoryStore.instance || new InMemoryStore();
 
-    store.addProduct({ name: 'Product 1', price: 100 });
-    store.addProduct({ name: 'Product 2', price: 200 });
-    store.addProduct({ name: 'Product 3', price: 300 });
+    store.addProduct({ name: 'Product 1', price: 100, availableUnits: 5 });
+    store.addProduct({ name: 'Product 2', price: 200, availableUnits: 5 });
+    store.addProduct({ name: 'Product 3', price: 300, availableUnits: 5 });
+
+    store.addUser({
+      username: 'admin',
+      email: 'admin@gmail.com',
+      password: 'password'
+    })
 
     console.log('Seed data added to store');
 }

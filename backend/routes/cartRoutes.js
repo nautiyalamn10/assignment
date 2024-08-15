@@ -39,4 +39,7 @@ const cartController = require('../controllers/cartController');
  */
 router.post('/add', cartController.addToCart);
 
+router.get('/', cartController.getCart);
+
+
 module.exports = router;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { authHandler } = require('../controllers/authController');
+const { login, signup } = require('../controllers/authController');
 
 /**
  * @swagger
@@ -39,6 +39,9 @@ const { authHandler } = require('../controllers/authController');
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post('/login', authHandler);
+router.post('/login', login);
+
+// @desc Register a new user
+router.post('/signup', signup)
 
 module.exports = router;

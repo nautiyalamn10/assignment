@@ -10,7 +10,7 @@ const authMiddleware = require('../middleware/authMiddleware');
  *     summary: Generate a new discount code
  *     tags: [Discount]
  *     security:
- *       - AdminAuth: []
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: The generated discount code

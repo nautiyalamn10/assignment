@@ -3,7 +3,8 @@ const discountUtils = require('../utils/discountUtils');
 
 exports.processCheckout = async (req, res) => {
   try {
-    const { userId, discountCode } = req.body;
+    const { discountCode } = req.body;
+    const userId = req.user.id;
 
     const cart = store.getCart(userId);
     if (!cart || cart.items.length === 0) {

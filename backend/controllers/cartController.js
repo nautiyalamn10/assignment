@@ -2,7 +2,8 @@ const { instance: store } = require('../store/inMemoryStore');
 
 exports.addToCart = async (req, res) => {
   try {
-    const { userId, productId, quantity } = req.body;
+    const { productId, quantity } = req.body;
+    const userId = req.user.id;
 
     const product = store.getProductById(productId);
     if (!product) {
@@ -18,7 +19,7 @@ exports.addToCart = async (req, res) => {
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
-      cart.items.push({ productId, quantity });
+      cart.items.push({ productId, quantity, productName: product.name, price: product.price});
     }
 
     store.updateCart(cart);
@@ -26,4 +27,22 @@ exports.addToCart = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Error adding item to cart', error: error.message });
   }
+};
+
+exports.getCart = (req, res) => {
+  const userId = req.user.id;
+  const cart = store.getCart(userId);
+
+  // Convert cart product IDs to detailed product info
+  const detailedCart = cart?.map(item => {
+    const product = store.getProductById(item.productId);
+    return {
+      productId: item.productId,
+      productName: product.name,
+      quantity: item.quantity,
+      price: product.price,
+    };
+  })||[];
+
+  res.status(200).json(detailedCart);
 };
