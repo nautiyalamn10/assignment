@@ -34,7 +34,7 @@ To run the backend server:
     3. Start the backend server:
         npm start
         
-###3. API Documentation with Swagger
+### 3. API Documentation with Swagger
 For testing the backend APIs, Swagger has been implemented. You can view the OpenAPI documentation by navigating to the following endpoint after starting the backend server:
 
 Swagger UI: http://localhost:5000/api-docs
